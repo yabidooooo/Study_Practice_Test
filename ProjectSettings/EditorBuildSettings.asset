@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/03_Asynchronous/AsynchronousScene_Lobby.unity
+    guid: 1e04c402326e700428260e21b5af7f32
+  - enabled: 1
+    path: Assets/03_Asynchronous/AsynchronousScene_Loading.unity
+    guid: ceb259d5a2858ad448b07d4c7ea83711
+  - enabled: 1
+    path: Assets/03_Asynchronous/AsynchronousScene_Game.unity
+    guid: 313bb23bb9bad66468a56d64266aa09b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d4f9ee3d2806b2a4c8366c3c32033e0d, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 875ce8fc37e1c0949a1bbdd6cf891e4a, type: 2}
