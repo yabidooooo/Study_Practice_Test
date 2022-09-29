@@ -88,6 +88,9 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(_Vertical);
+        Debug.Log(_Horizontal);
+
         InputDevice inputDevice = InputManager.ActiveDevice;
         if (inputDevice == null)
         {
