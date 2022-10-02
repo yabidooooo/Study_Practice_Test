@@ -21,7 +21,6 @@ public class StateMachine<T> where T : class
         ChangeState(entryState);
     }
 
-
     public void Execute()
     {
         if (globalState != null)
