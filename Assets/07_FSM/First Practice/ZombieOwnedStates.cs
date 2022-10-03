@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace  ZombieOwnedStates
+namespace ZombieOwnedStates
 {
     public class Idle : ZombieState<Zombie>
     {
@@ -14,6 +14,12 @@ namespace  ZombieOwnedStates
         public override void Execute(Zombie entity)
         {
             Debug.Log("Idle 상태 중.");
+
+            if (entity.distance < 5)
+            {
+                // 플레이어와의 거리가 Chase 거리면 Chase
+                entity.ChangeState(ZombieStates.Chase);
+            }
         }
 
         public override void Exit(Zombie entity)
