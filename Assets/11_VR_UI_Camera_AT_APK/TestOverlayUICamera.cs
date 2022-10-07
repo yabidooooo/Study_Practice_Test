@@ -40,10 +40,10 @@ public class TestOverlayUICamera : MonoBehaviour
     {
         uiCanvas.SetActive(true);
     }
-    
+
     /// <summary>
-     /// Usage: Recreate UI render target according overlay type and overlay size
-     /// </summary>
+    /// Usage: Recreate UI render target according overlay type and overlay size
+    /// </summary>
     void CameraAndRenderTargetSetup()
     {
         float overlayWidth = cameraRenderOverlay.transform.localScale.x;
