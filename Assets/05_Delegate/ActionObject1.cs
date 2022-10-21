@@ -7,17 +7,11 @@ public class ActionObject1 : ActionObjectsMom
 {
     public Action actionObj1;
 
-    public int objectFrame = 10;
-
     void Awake()
     {
         ActionManager.Instance.RegisterObjectList(this);
     }
-    void Start()
-    {
-        actionObj1 += PrintMessageMethod;
-    }
-    public void PrintMessageMethod()
+    public void OnUpdate()
     {
         Debug.Log(this.name);
     }

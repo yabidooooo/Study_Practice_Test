@@ -3,34 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionManager : MonoSingleton<ActionManager>
+public class ActionManager : Singleton<ActionManager>
 {
-    ActionObject1 ao1;
     List<ActionObject1> objectList = new List<ActionObject1>();
     int FrameCount = 0;
     // 스케쥴러를 돌려주기 위함
     public void Update()
     {
         Debug.Log("업데이트 실행");
-        AddUpdate();
+        Scheduler();
     }
     // 스케쥴러
-    public void AddUpdate()
+    public void Scheduler()
     {
-        for (int j = 0; j < objectList.Count; j++)
-        {
-            ao1 = objectList[j];
-        }
-
-        FrameCount++;
-        if (FrameCount % ao1.objectFrame == 0)
+        FrameCount += 1;
+        if (FrameCount % 10 == 0)
         {
             for (int i = 0; i < objectList.Count; i++)
             {
-                objectList[i].actionObj1.Invoke();
+                Debug.Log(FrameCount + " 실행시켰습니다.");
+                objectList[i].OnUpdate();
             }
             FrameCount = 0;
         }
+        Debug.Log("첫번째 : " + FrameCount);
     }
     // 구독 등록
     public void RegisterObjectList(ActionObject1 obj1)
