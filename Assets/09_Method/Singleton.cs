@@ -1,40 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> where T : Singleton<T>, new()
 {
-    private static bool m_ShuttingDown = false;
-    private static object m_Lock = new object();
+    private static T _instance;
 
-    private static T instance = null;
     public static T Instance
     {
         get
         {
-            if (m_ShuttingDown)
+            if (_instance == null)
             {
-                return null;
+                _instance = new T();
+            }
+            return _instance;
+        }
+    }
+}
+
+public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
+{
+    private static T _instance;
+
+    public static T Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                var gameObject = new GameObject(typeof(T).Name);
+                _instance = gameObject.AddComponent<T>();
+
+                DontDestroyOnLoad(gameObject);
             }
 
-            lock (m_Lock)
-            {
-                if (instance == null)
-                {
-                    instance = (T)FindObjectOfType(typeof(T));
-
-                    if (instance == null)
-                    {
-                        var singletonObject = new GameObject();
-                        instance = singletonObject.AddComponent<T>();
-                        singletonObject.name = typeof(T).ToString() + "(Singleton)";
-
-                        DontDestroyOnLoad(singletonObject);
-                    }
-                }
-                return instance;
-            }
+            return _instance;
         }
     }
 }
