@@ -7,28 +7,28 @@ using UnityEngine;
 
 public class TestUpdateScheduler : MonoSingleton<TestUpdateScheduler>
 {
+    Dictionary<int, Action> dicList = new Dictionary<int, Action>();
+
+    List<int> intList = new List<int>();
+    List<Action> actionList = new List<Action>();
+
     int OneCount = 0;
     int TwoCount = 0;
     int ThreeCount = 0;
-
-    TestObject1 testOne;
-    TestObject2 testTwo;
-    TestObject3 testThree;
-
-    private void Start()
-    {
-        testOne = FindObjectOfType<TestObject1>();
-        testTwo = FindObjectOfType<TestObject2>();
-        testThree = FindObjectOfType<TestObject3>();
-    }
 
     void Update()
     {
         Debug.Log("나는 스케쥴러");
 
-        TestOne(testOne.Frame, testOne.OnMethodOne);
-        TestTwo(testTwo.Frame, testTwo.OnMethodTwo);
-        TestThree(testThree.Frame, testThree.OnMethodThree);
+        foreach (KeyValuePair<int, Action> newDic in dicList)
+        {
+            intList.Add(newDic.Key);
+            actionList.Add(newDic.Value);
+        }
+
+        TestOne(intList[0], actionList[0]);
+        TestTwo(intList[1], actionList[1]);
+        TestThree(intList[2], actionList[2]);
     }
 
     public void TestOne(int frame, Action action)
@@ -57,5 +57,10 @@ public class TestUpdateScheduler : MonoSingleton<TestUpdateScheduler>
             action();
             ThreeCount = 0;
         }
+    }
+
+    public void RegisterList(int frame, Action action)
+    {
+        dicList.Add(frame, action);
     }
 }
