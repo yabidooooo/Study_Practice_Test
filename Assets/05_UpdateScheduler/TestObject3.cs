@@ -1,23 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestObject3 : MonoBehaviour
 {
-    public Action<int, Action> testObjectThree;
     public int Frame = 30;
-    TestUpdateScheduler tus = new TestUpdateScheduler();
-    void Awake()
+
+    public void OnMethodThree()
     {
-        testObjectThree += tus.OnUpdateScheduler;
-    }
-    void Update()
-    {
-        //testObjectThree(Frame, OnMethod);
-    }
-    public void OnMethod()
-    {
-        Debug.Log(this.name);   
+        Debug.Log("³ª´Â 3¹ø");
     }
 }
