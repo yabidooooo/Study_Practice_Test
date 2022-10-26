@@ -5,39 +5,18 @@ using UnityEngine;
 
 public class TestObject1 : MonoBehaviour
 {
-    private int frameCount;
-    public int FrameCount
-    {
-        get
-        {
-            return frameCount;
-        }
-        set
-        {
-            frameCount = value;
-        }
-    }
-    private int _number = 0;
-
-    public Action<int, Action> actionObj;
+    public Action<int, Action> testObjectOne;
     public int Frame = 10;
-    private TestUpdateScheduler testUS = new TestUpdateScheduler();
-
+    TestUpdateScheduler tus = new TestUpdateScheduler();
     void Awake()
     {
-        actionObj += testUS.OnUpdateScheduler;
+        testObjectOne += tus.OnUpdateScheduler;
     }
-    private void Update()
+    void Update()
     {
-        actionObj(Frame, OnUpdate);
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            _number += 1;
-            FrameCount = 50 * _number;
-        }
+        //testObjectOne(Frame, OnMethod);
     }
-    public void OnUpdate()
+    public void OnMethod()
     {
         Debug.Log(this.name);
     }

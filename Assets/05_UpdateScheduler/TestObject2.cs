@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class TestObject2 : MonoBehaviour
 {
-    Action<int, Action> testObj;
+    public Action<int, Action> testObjectTwo;
     public int Frame = 20;
-    TestUpdateScheduler testUS = new TestUpdateScheduler();
-
+    TestUpdateScheduler tus = new TestUpdateScheduler();
     void Awake()
     {
-        testObj += testUS.OnUpdateScheduler;
+        testObjectTwo += tus.OnUpdateScheduler;
     }
-    private void Update()
+    void Update()
     {
-        testObj(Frame, OnMethod);
+        //testObjectTwo(Frame, OnMethod);
     }
     public void OnMethod()
     {
