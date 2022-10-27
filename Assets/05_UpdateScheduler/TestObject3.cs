@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestObject3 : MonoBehaviour
@@ -10,7 +9,7 @@ public class TestObject3 : MonoBehaviour
 
     void Start()
     {
-        TestUpdateScheduler.Instance.RegisterList(Frame, OnMethodThree);
+        MyScheduler.Instance.AddSchedule(Frame, OnMethodThree);
     }
 
     public void OnMethodThree()

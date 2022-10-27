@@ -9,7 +9,7 @@ public class TestObject2 : MonoBehaviour
 
     void Start()
     {
-        TestUpdateScheduler.Instance.RegisterList(Frame, OnMethodTwo);
+        MyScheduler.Instance.AddSchedule(Frame, OnMethodTwo);
     }
 
     public void OnMethodTwo()

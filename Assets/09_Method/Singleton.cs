@@ -27,10 +27,15 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
         {
             if (_instance == null)
             {
-                var gameObject = new GameObject(typeof(T).Name);
-                _instance = gameObject.AddComponent<T>();
+                _instance = (T)FindObjectOfType(typeof(T));
 
-                DontDestroyOnLoad(gameObject);
+                if (_instance == null)
+                {
+                    var gameObject = new GameObject(typeof(T).Name);
+                    _instance = gameObject.AddComponent<T>();
+
+                    DontDestroyOnLoad(gameObject);
+                }
             }
 
             return _instance;
