@@ -9,7 +9,19 @@ public class TestObject2 : MonoBehaviour
 
     void Start()
     {
-        MyScheduler.Instance.AddSchedule(Frame, OnMethodTwo);
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            MyScheduler.Instance.AddSchedule(Frame, OnMethodTwo);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            MyScheduler.Instance.RemoveSchedule(OnMethodTwo);
+        }
     }
 
     public void OnMethodTwo()
