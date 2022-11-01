@@ -337,6 +337,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2232919398447903589, guid: 7002c7d6ec344904db1ba8b0e77e4806, type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 8bae5b7802a0ab444b50fe0c53d977c9, type: 2}
+    - target: {fileID: 2232919398447903589, guid: 7002c7d6ec344904db1ba8b0e77e4806, type: 3}
       propertyPath: Frame
       value: 10
       objectReference: {fileID: 0}
